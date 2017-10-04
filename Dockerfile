@@ -9,10 +9,11 @@ RUN apt-get -f install
 #安裝 apache2 + php7.0
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     apache2 \
-    php7.0 php7.0-mysql php7.0-mbstring php7.0-cur php7.0-json php7.0-zip php7.0-xml php7.0-sqlite3 php7.0-gd php7.0-mcrypt \
+    php7.0 php7.0-mysql php7.0-mbstring php7.0-cur php7.0-json php7.0-zip \
+    php7.0-xml php7.0-sqlite3 php7.0-gd php7.0-mcrypt php7.0-pgsql \
     libapache2-mod-php7.0
 
-RUN a2enmod ssl rewrite proxy proxy_http proxy_balancer proxy_wstunnel 
+RUN a2enmod headers ssl rewrite proxy proxy_http proxy_balancer proxy_wstunnel 
 
 #加入檔案
 COPY data/apache2/000-default.conf /etc/apache2/sites-enabled/000-default.conf
